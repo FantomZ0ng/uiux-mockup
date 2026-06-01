@@ -1,11 +1,11 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-// Автор на відео визначає, які сторінки є публічними (вхід та реєстрація)
-const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)']);
+// ✅ Додаємо '/' до масиву публічних сторінок
+const isPublicRoute = createRouteMatcher(['/', '/sign-in(.*)', '/sign-up(.*)']);
 
 export default clerkMiddleware(async (auth, request) => {
   if (!isPublicRoute(request)) {
-    await auth.protect(); // Захищає всі інші маршрути, включаючи наш /api/user
+    await auth.protect(); // Тепер захищає все, КРІМ головної сторінки та авторизації
   }
 });
 
