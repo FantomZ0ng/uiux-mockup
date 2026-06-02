@@ -52,9 +52,10 @@ function Hero() {
 
             })
 
-            console.log(result.data);
-            setLoading(false);
-            //Navigate to Project Rout
+        console.log(result.data);
+        setLoading(false);
+        //Navigate to Project Rout
+        router.push('/project/'+projectId);
     }
   return (
     <div className='p-10 md:px-48 xl:px-60 mt-8 flex flex-col items-center justify-center'>
