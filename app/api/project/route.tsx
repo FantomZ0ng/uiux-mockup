@@ -1,6 +1,8 @@
 import { db } from "@/config/db";
-import { ProjectTable } from "@/config/schema";
+import { ProjectTable, ScreenConfigTable } from "@/config/schema";
 import { currentUser } from "@clerk/nextjs/server";
+import { equal } from "assert";
+import { SQL, and, eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest){
@@ -22,4 +24,45 @@ export async function POST(req: NextRequest){
 
 
 
+}
+export async function GET (req:NextRequest) {
+    const projectId=await req.nextUrl.searchParams.get('projectId');
+    const user=await currentUser();
+    /*
+    try{
+        
+    const result=await db.select().from(ProjectTable)
+        .where(and(eq(ProjectTable.projectId,projectId as string),eq(ProjectTable.userId,user?.primaryEmailAddress?.emailAddress as string)))
+    const ScreanConfig=await db.select().from(ScreenConfigTable)
+        .where(eq(ScreenConfigTable.projectId,projectId as string))
+    return NextResponse.json({
+        projectDetail:result[0],
+        screenConfig:ScreanConfig
+    });
+    }
+    */
+    try {
+        // 1. Шукаємо проект ТІЛЬКИ за projectId (тимчасово прибираємо перевірку userId)
+        const result = await db.select().from(ProjectTable)
+            .where(eq(ProjectTable.projectId, projectId as string));
+            
+        // 2. Шукаємо екрани
+        const ScreanConfig = await db.select().from(ScreenConfigTable)
+            .where(eq(ScreenConfigTable.projectId, projectId as string));
+            
+        return NextResponse.json({
+            projectDetail: result[0],
+            screenConfig: ScreanConfig
+        });
+    }
+
+    catch(e)
+    {
+        return NextResponse.json({ msg: 'Error' })
+    }
+
+}
+
+function where(arg0: SQL<unknown>) {
+    throw new Error("Function not implemented.");
 }
