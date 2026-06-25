@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Динамічна організація Фронтенд для засобів аналітики за допомогою AI-агентів.
 
-## Getting Started
+Цей проєкт — повнофункціональний SaaS-застосунок, який автоматизує процес створення інтерфейсів для засобів аналітики веб- та мобільних застосунків. Завдяки інтеграції з передовими AI-моделями, користувачі можуть генерувати повноцінні UI/UX-макети, просто описуючи свою ідею текстовим запитом.
 
-First, run the development server:
+Основні можливості
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+•	AI-генерація: Автоматичне створення структури інтерфейсу та візуального дизайну за допомогою текстових промптів.
+•	Інтерактивний редактор: Перегляд, масштабування та редагування згенерованих екранів на інтерактивному полотні.
+•	Управління кодом: Можливість перегляду згенерованого HTML/Tailwind CSS коду для кожного компонента.
+•	Гнучке налаштування тем: Миттєва зміна тем оформлення проєкту без потреби в повторній генерації.
+•	SaaS-інфраструктура: Вбудована система автентифікації користувачів та модель підписок (Free/Premium).
+•	Управління проєктами: Збереження історії, створення скріншотів та деплой проєктів для спільного доступу.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Технологічний стек
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+•	Frontend: Next.js 16, TypeScript, Tailwind CSS.
+•	UI Components: Shadcn UI.
+•	Backend & Database: PostgreSQL (Neon), Drizzle ORM.
+•	Authentication: Clerk.
+•	AI Integration: OpenRouter API.
+•	Deployment: Vercel.
+ Початок роботи
+Передумови
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+•	Node.js (рекомендована версія v18 або вище).
+•	Акаунти на сервісах: Clerk, Neon.tech, OpenRouter.
 
-## Learn More
+Встановлення
+1.	Клонуйте репозиторій:
+Bash
+git clone <https://github.com/FantomZ0ng/uiux-mockup >
+cd ai-ui-ux-generator
+2.  Встановіть залежності:
 
-To learn more about Next.js, take a look at the following resources:
+   ```
+   bash
+    
+   npm install
+   ```
+3.	Створіть файл .env.local у корені проєкту та додайте необхідні змінні середовища:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Фрагмент коду
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=...
+CLERK_SECRET_KEY=...
+DATABASE_URL=...
+OPENROUTER_API_KEY=...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4.  Запустіть застосунок у режимі розробки:
 
-## Deploy on Vercel
+    ```
+    bash
+    
+    npm run dev
+    ``` 
+ План розвитку (Roadmap)
+•	Додавання нових AI-моделей для генерації.
+•	Експорт макетів у формат Figma/Sketch.
+•	Розширення бібліотеки готових тем.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
