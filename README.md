@@ -40,9 +40,13 @@ cd ai-ui-ux-generator
 3.	Створіть файл .env.local у корені проєкту та додайте необхідні змінні середовища:
 
 Фрагмент коду
+
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=...
+
 CLERK_SECRET_KEY=...
+
 DATABASE_URL=...
+
 OPENROUTER_API_KEY=...
 
 4.  Запустіть застосунок у режимі розробки:
